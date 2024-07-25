@@ -1,0 +1,32 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.navbar-brand {
+    font-weight: bold;
+}
+
+.form-group label {
+    font-weight: bold;
+    color: #adb5bd;
+}
+
+.form-control {
+    background-color: #343a40;
+    color: #fff;
+    border: 1px solid #495057;
+}
+
+.btn-primary {
+    background-color: #0071e3;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #005bb5;
+}
+
+footer {
+    background-color: #212529;
+    color: #adb5bd;
+}

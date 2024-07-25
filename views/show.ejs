@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= movie.title %></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="bg-dark text-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/movies">MovieApp</a>
+    </nav>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4"><%= movie.title %></h1>
+        <p><strong>Director:</strong> <%= movie.director %></p>
+        <p><strong>Year:</strong> <%= movie.year %></p>
+        <p><strong>Description:</strong> <%= movie.description %></p>
+        <h2 class="mt-4">Reviews</h2>
+        <ul class="list-group mb-4">
+            <% movie.review.forEach(review => { %>
+                <li class="list-group-item bg-secondary text-light">
+                    <p><%= review.content %> - <%= review.author %> (<%= review.createdAt.toLocaleDateString() %>)</p>
+                    <form action="/movies/<%= movie.id %>/reviews/<%= review.id %>?_method=DELETE" method="POST" class="d-inline">
+                        <button type="submit" class="btn btn-danger btn-sm">Delete Review</button>
+                    </form>
+                </li>
+            <% }) %>
+        </ul>
+        <h3>Add Review</h3>
+        <form action="/movies/<%= movie.id %>/reviews" method="POST">
+            <div class="form-group">
+                <label for="author">Author:</label>
+                <input type="text" name="author" id="author" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="content">Content:</label>
+                <textarea name="content" id="content" class="form-control" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Add Review</button>
+        </form>
+        <a href="/movies" class="btn btn-secondary btn-block mt-3">Back</a>
+        <a href="/movies/<%= movie.id %>/edit" class="btn btn-info btn-block mt-1">Edit</a>
+    </div>
+    <footer class="text-center mt-5 py-3">
+        <p>&copy; 2023 MovieApp. All rights reserved.</p>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
